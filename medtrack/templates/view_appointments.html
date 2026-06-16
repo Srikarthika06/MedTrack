@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>View Appointments</title>
+</head>
+<body>
+    <h2>View Appointments</h2>
+
+    <table border="1">
+        <tr>
+            <th>Patient</th>
+            <th>Doctor</th>
+            <th>Date</th>
+            <th>Time</th>
+        </tr>
+
+        {% for appointment in appointments %}
+        <tr>
+            <td>{{ appointment.patient }}</td>
+            <td>{{ appointment.doctor }}</td>
+            <td>{{ appointment.date }}</td>
+            <td>{{ appointment.time }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/login">Back to Dashboard</a>
+</body>
+</html>
