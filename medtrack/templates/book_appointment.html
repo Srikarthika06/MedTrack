@@ -1,21 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Book Appointment</title>
+<title>Book Appointment</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
+
 <body>
-    <h2>Book Appointment</h2>
 
-    <form method="POST">
-        <input type="text" name="patient_name" placeholder="Patient Name" required><br><br>
-        <input type="text" name="doctor_name" placeholder="Doctor Name" required><br><br>
-        <input type="date" name="date" required><br><br>
-        <input type="time" name="time" required><br><br>
+<div class="navbar">
+<h2>Book Appointment</h2>
+<a href="/login">Dashboard</a>
+</div>
 
-        <button type="submit">Book Appointment</button>
-    </form>
+<div class="container">
 
-    <br>
-    <a href="/login">Back to Dashboard</a>
+<div class="card">
+
+<h2>Schedule an Appointment</h2>
+
+<form method="POST">
+
+<input type="text"
+name="patient_name"
+placeholder="Patient Name"
+required>
+
+<input type="text"
+name="doctor_name"
+placeholder="Doctor Name"
+required>
+
+<label>Date</label>
+<input type="date"
+name="date"
+required>
+
+<label>Time</label>
+<input type="time"
+name="time"
+required>
+
+<button type="submit">
+Book Appointment
+</button>
+
+</form>
+
+</div>
+
+</div>
+
 </body>
 </html>

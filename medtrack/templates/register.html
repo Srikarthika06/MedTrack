@@ -1,22 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Register</title>
+<title>Register</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
-    <h2>Patient Registration</h2>
 
-    <form method="POST">
-        <input type="text" name="name" placeholder="Name" required><br><br>
+<div class="navbar">
+<h2>MedTrack</h2>
+<a href="/login">Login</a>
+</div>
 
-        <input type="email" name="email" placeholder="Email" required><br><br>
+<div class="container">
+<div class="card">
+<h2>Patient Registration</h2>
 
-        <input type="password" name="password" placeholder="Password" required><br><br>
+<form method="POST">
+<input type="text" name="name" placeholder="Full Name" required>
+<input type="email" name="email" placeholder="Email" required>
+<input type="password" name="password" placeholder="Password" required>
+<input type="text" name="phone" placeholder="Phone Number" required>
+<button type="submit">Register</button>
+</form>
 
-        <input type="text" name="phone" placeholder="Phone Number" required><br><br>
-
-        <button type="submit">Register</button>
-    </form>
+</div>
+</div>
 
 </body>
 </html>

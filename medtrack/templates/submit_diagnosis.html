@@ -1,22 +1,28 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Submit Diagnosis</title>
+<title>Submit Diagnosis</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
 <body>
-    <h2>Submit Diagnosis</h2>
 
-    <form method="POST">
-        <input type="text" name="patient_name" placeholder="Patient Name" required><br><br>
+<div class="navbar">
+<h2>Submit Diagnosis</h2>
+<a href="/login">Dashboard</a>
+</div>
 
-        <textarea name="diagnosis" placeholder="Diagnosis Details" required></textarea><br><br>
+<div class="container">
+<div class="card">
 
-        <textarea name="notes" placeholder="Doctor Notes"></textarea><br><br>
+<form method="POST">
+<input type="text" name="patient_name" placeholder="Patient Name" required>
+<textarea name="diagnosis" placeholder="Diagnosis Details" required></textarea>
+<textarea name="notes" placeholder="Doctor Notes"></textarea>
+<button type="submit">Submit Diagnosis</button>
+</form>
 
-        <button type="submit">Submit Diagnosis</button>
-    </form>
+</div>
+</div>
 
-    <br>
-    <a href="/login">Back to Dashboard</a>
 </body>
 </html>

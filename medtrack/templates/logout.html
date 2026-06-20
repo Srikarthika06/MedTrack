@@ -1,11 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Logout</title>
+<title>Logout</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
-<body>
-    <h2>You have been logged out successfully.</h2>
 
-    <a href="/login">Login Again</a>
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>You have been logged out</h1>
+
+<a href="/login">
+<button>Login Again</button>
+</a>
+
+</div>
+
+</div>
+
 </body>
 </html>

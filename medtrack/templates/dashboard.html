@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dashboard</title>
+<title>Dashboard</title>
+<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
 </head>
+
 <body>
+
+<div class="navbar">
+<h2>MedTrack Dashboard</h2>
+<a href="/logout">Logout</a>
+</div>
+
+<div class="container">
+
+<div class="card">
 
 <h1>Welcome to MedTrack Dashboard</h1>
 
-<ul>
-    <li><a href="/book_appointment">Book Appointment</a></li>
-    <li><a href="/view_appointments">View Appointments</a></li>
-    <li><a href="/profile">Profile</a></li>
-    <li><a href="/logout">Logout</a></li>
-    <li><a href="/submit_diagnosis">Submit Diagnosis</a></li>
-    <li><a href="/search_appointments">Search Appointments</a></li>
-</ul>
+<div class="links">
+
+<a href="/book_appointment">Book Appointment</a>
+
+<a href="/view_appointments">View Appointments</a>
+
+<a href="/profile">Profile</a>
+
+<a href="/submit_diagnosis">Submit Diagnosis</a>
+
+<a href="/search_appointments">Search Appointments</a>
+
+<a href="/logout">Logout</a>
+
+</div>
+
+</div>
+
+</div>
 
 </body>
 </html>
