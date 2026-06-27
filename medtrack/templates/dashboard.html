@@ -1,42 +1,55 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Dashboard</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Dashboard | MedTrack{% endblock %}
 
-<div class="navbar">
-<h2>MedTrack Dashboard</h2>
-<a href="/logout">Logout</a>
+{% block content %}
+<div class="success">Login successful.</div>
+
+<section class="dashboard-banner">
+    <h1>{{ welcome_title|default("Welcome to MedTrack") }}</h1>
+    <p>{{ welcome_copy|default("Manage your appointments and health records from your dashboard.") }}</p>
+</section>
+
+<div class="dashboard-actions">
+    <a class="btn" href="{{ primary_action_url|default('/book_appointment') }}">{{ primary_action|default("Book Appointment") }}</a>
 </div>
 
-<div class="container">
+<h2>{{ role|default("User") }} Dashboard</h2>
 
-<div class="card">
+<section class="stats">
+    <div class="stat-card"><strong>1</strong>Pending Appointments</div>
+    <div class="stat-card"><strong>0</strong>Completed Appointments</div>
+    <div class="stat-card"><strong>1</strong>Total Appointments</div>
+</section>
 
-<h1>Welcome to MedTrack Dashboard</h1>
+<section class="card">
+    <div class="tabs">
+        <span class="active">Pending Appointments</span>
+        <span>Completed Appointments</span>
+        <span>All Appointments</span>
+    </div>
 
-<div class="links">
-
-<a href="/book_appointment">Book Appointment</a>
-
-<a href="/view_appointments">View Appointments</a>
-
-<a href="/profile">Profile</a>
-
-<a href="/submit_diagnosis">Submit Diagnosis</a>
-
-<a href="/search_appointments">Search Appointments</a>
-
-<a href="/logout">Logout</a>
-
-</div>
-
-</div>
-
-</div>
-
-</body>
-</html>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>{% if role == "Doctor" %}Patient Name{% else %}Doctor{% endif %}</th>
+                    <th>Date</th>
+                    <th>Symptoms</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{% if role == "Doctor" %}John Doe{% else %}Dr. Smith{% endif %}</td>
+                    <td>2026-06-20</td>
+                    <td>General consultation</td>
+                    <td><span class="badge">Pending</span></td>
+                    <td><a class="btn" href="/view_appointments">View Details</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

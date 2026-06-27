@@ -1,46 +1,48 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Search Appointments</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="navbar">
-<h2>Search Appointments</h2>
-<a href="/login">Dashboard</a>
-</div>
+{% block title %}Search Appointments | MedTrack{% endblock %}
 
-<div class="container">
-<div class="card">
+{% block content %}
+<section class="card form-card">
+    <h2>Search Appointment</h2>
+    <p class="muted">Search by patient, doctor, date, or status.</p>
 
-<form method="POST">
-<input type="text" name="search_term" placeholder="Search by doctor, date, or status" required>
-<button type="submit">Search</button>
-</form>
+    <form method="POST">
+        <label>Search
+            <input type="text" name="search_term" required>
+        </label>
+        <button type="submit">Search</button>
+    </form>
+</section>
 
 {% if results %}
-<table>
-<tr>
-<th>Patient</th>
-<th>Doctor</th>
-<th>Date</th>
-<th>Status</th>
-</tr>
+<section class="card">
+    <h2>Search Results</h2>
 
-{% for item in results %}
-<tr>
-<td>{{ item.patient }}</td>
-<td>{{ item.doctor }}</td>
-<td>{{ item.date }}</td>
-<td>{{ item.status }}</td>
-</tr>
-{% endfor %}
-</table>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in results %}
+                <tr>
+                    <td>{{ item.patient }}</td>
+                    <td>{{ item.doctor }}</td>
+                    <td>{{ item.date }}</td>
+                    <td><span class="badge">{{ item.status }}</span></td>
+                    <td><a class="btn" href="/view_appointments">View</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
 {% endif %}
-
-</div>
-</div>
-
-</body>
-</html>
+{% endblock %}

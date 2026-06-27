@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+
+{% block title %}MedTrack Home{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <h1>Welcome to MedTrack App</h1>
+    <p>Connect with doctors, book appointments, and manage health records from one simple healthcare platform.</p>
+    <a class="btn" href="/login">Login</a>
+    <a class="btn" href="/register">Register</a>
+</section>
+
+<section class="features">
+    <div class="feature-card">
+        <div class="feature-icon">D</div>
+        <h3>Find Doctors</h3>
+        <p>Connect with qualified healthcare professionals.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">A</div>
+        <h3>Easy Appointments</h3>
+        <p>Book and manage appointments with a few clicks.</p>
+    </div>
+    <div class="feature-card">
+        <div class="feature-icon">R</div>
+        <h3>Digital Records</h3>
+        <p>Access diagnosis and appointment information anytime.</p>
+    </div>
+</section>
+
+<section class="card">
+    <h2>How It Works</h2>
+    <ol>
+        <li>Register as a patient or doctor</li>
+        <li>Log in to your dashboard</li>
+        <li>Patients can book appointments</li>
+        <li>Doctors can review appointments and submit diagnosis notes</li>
+    </ol>
+</section>
+{% endblock %}

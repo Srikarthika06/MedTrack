@@ -1,25 +1,11 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Logout</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Logged Out | MedTrack{% endblock %}
 
-<div class="container">
-
-<div class="card">
-
-<h1>You have been logged out</h1>
-
-<a href="/login">
-<button>Login Again</button>
-</a>
-
-</div>
-
-</div>
-
-</body>
-</html>
+{% block content %}
+<section class="card auth-card" style="text-align: center;">
+    <h1>You have been logged out</h1>
+    <p class="muted">Login again to continue using MedTrack.</p>
+    <a class="btn" href="/login">Login Again</a>
+</section>
+{% endblock %}

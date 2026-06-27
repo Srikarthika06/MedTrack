@@ -1,28 +1,22 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Submit Diagnosis</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="navbar">
-<h2>Submit Diagnosis</h2>
-<a href="/login">Dashboard</a>
-</div>
+{% block title %}Submit Diagnosis | MedTrack{% endblock %}
 
-<div class="container">
-<div class="card">
+{% block content %}
+<section class="card form-card">
+    <h2>Appointment Details</h2>
 
-<form method="POST">
-<input type="text" name="patient_name" placeholder="Patient Name" required>
-<textarea name="diagnosis" placeholder="Diagnosis Details" required></textarea>
-<textarea name="notes" placeholder="Doctor Notes"></textarea>
-<button type="submit">Submit Diagnosis</button>
-</form>
-
-</div>
-</div>
-
-</body>
-</html>
+    <form method="POST">
+        <label>Patient Name
+            <input type="text" name="patient_name" required>
+        </label>
+        <label>Diagnosis
+            <textarea name="diagnosis" placeholder="Enter your diagnosis" required></textarea>
+        </label>
+        <label>Treatment Plan / Notes
+            <textarea name="notes" placeholder="Describe treatment plan"></textarea>
+        </label>
+        <button type="submit">Submit Diagnosis</button>
+    </form>
+</section>
+{% endblock %}

@@ -10,7 +10,7 @@ from flask import redirect, url_for
 
 @app.route("/")
 def home():
-    return redirect(url_for("login"))
+    return render_template("home.html")
 
 @app.route("/register", methods=["GET", "POST"])
 def register():
@@ -19,13 +19,15 @@ def register():
         email = request.form["email"]
         password = request.form["password"]
         phone = request.form["phone"]
+        role = request.form["role"]
 
         users_table.put_item(
             Item={
                 "email": email,
                 "name": name,
                 "password": password,
-                "phone": phone
+                "phone": phone,
+                "role": role
             }
         )
 
@@ -36,7 +38,21 @@ def register():
 @app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
-        return render_template("dashboard.html")
+        role = request.form["role"]
+        dashboard_context = {
+            "role": role,
+            "welcome_title": "Manage your care journey." if role == "Patient" else "Manage your patient care queue.",
+            "welcome_copy": (
+                "Book appointments, review your profile, and keep your care records organized in one secure workspace."
+                if role == "Patient"
+                else "Track appointments, submit diagnoses, and review patient activity from a focused doctor workspace."
+            ),
+            "primary_action": "Book Appointment" if role == "Patient" else "Submit Diagnosis",
+            "primary_action_url": "/book_appointment" if role == "Patient" else "/submit_diagnosis",
+            "secondary_action": "View Appointments" if role == "Patient" else "Search Appointments",
+            "secondary_action_url": "/view_appointments" if role == "Patient" else "/search_appointments",
+        }
+        return render_template("dashboard.html", **dashboard_context)
     return render_template("login.html")
 
 @app.route("/book_appointment", methods=["GET", "POST"])

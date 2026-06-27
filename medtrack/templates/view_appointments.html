@@ -1,39 +1,34 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>View Appointments</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
-<body>
+{% extends "base.html" %}
 
-<div class="navbar">
-<h2>View Appointments</h2>
-<a href="/login">Dashboard</a>
-</div>
+{% block title %}Appointments | MedTrack{% endblock %}
 
-<div class="container">
-<div class="card">
+{% block content %}
+<section class="card">
+    <h2>My Appointments</h2>
 
-<table>
-<tr>
-<th>Patient</th>
-<th>Doctor</th>
-<th>Date</th>
-<th>Time</th>
-</tr>
-
-{% for appointment in appointments %}
-<tr>
-<td>{{ appointment.patient }}</td>
-<td>{{ appointment.doctor }}</td>
-<td>{{ appointment.date }}</td>
-<td>{{ appointment.time }}</td>
-</tr>
-{% endfor %}
-</table>
-
-</div>
-</div>
-
-</body>
-</html>
+    <div class="table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    <th>Patient</th>
+                    <th>Doctor</th>
+                    <th>Date</th>
+                    <th>Time</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for appointment in appointments %}
+                <tr>
+                    <td>{{ appointment.patient }}</td>
+                    <td>{{ appointment.doctor }}</td>
+                    <td>{{ appointment.date }}</td>
+                    <td>{{ appointment.time }}</td>
+                    <td><span class="badge">Pending</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</section>
+{% endblock %}

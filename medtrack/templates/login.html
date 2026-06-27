@@ -1,36 +1,36 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>Login</title>
-<link rel="stylesheet" href="{{ url_for('static',filename='style.css') }}">
-</head>
+{% extends "base.html" %}
 
-<body>
+{% block title %}Login | MedTrack{% endblock %}
 
-<div class="navbar">
-<h2>MedTrack</h2>
-<a href="/register">Register</a>
-</div>
+{% block content %}
+<section class="card auth-card">
+    <h2>Login to Your Account</h2>
+    <p class="muted">Access your healthcare dashboard to manage appointments.</p>
 
-<div class="container">
+    <form method="POST">
+        <div class="role-tabs">
+            <label class="role-option">
+                <input type="radio" name="role" value="Patient" checked>
+                <strong>Patient</strong>
+            </label>
+            <label class="role-option">
+                <input type="radio" name="role" value="Doctor">
+                <strong>Doctor</strong>
+            </label>
+        </div>
 
-<div class="card">
+        <label>Email Address
+            <input type="email" name="email" required>
+        </label>
+        <label>Password
+            <input type="password" name="password" required>
+        </label>
 
-<h2>Login</h2>
+        <button type="submit">Login</button>
+    </form>
 
-<form method="POST">
-
-<input type="email" name="email" placeholder="Email">
-
-<input type="password" name="password" placeholder="Password">
-
-<button type="submit">Login</button>
-
-</form>
-
-</div>
-
-</div>
-
-</body>
-</html>
+    <p class="muted" style="text-align: center; margin-top: 20px;">
+        Don't have an account? <a href="/register">Register here</a>
+    </p>
+</section>
+{% endblock %}
